@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Editar Datos</h2>
+      <table class="table mt-2">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Dirección</th>
+            <th>Identificación</th>
+            <th>Moneda</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input [(ngModel)]="dataPersonEdit.descripcion" type="text" class="form-control" id="descripcion" name="descripcion"
+                required maxlength="250">
+            </td>
+            <td>
+              <input [(ngModel)]="dataPersonEdit.direccion" type="text" class="form-control" id="direccion" name="direccion"
+                required maxlength="250">
+            </td>
+            <td>
+              <input [(ngModel)]="dataPersonEdit.identificacion" type="text" class="form-control" id="identificacion"
+                name="identificacion" required maxlength="50">
+            </td>
+            <td>
+              <select [(ngModel)]="dataPersonEdit.monedaCode" class="form-control" id="moneda" name="moneda" required>
+                <option *ngFor="let items of listMonedas" [value]="items.id">
+                  {{items.nombre}}
+                </option>
+              </select>
+            </td>
+            <td class="text-center">
+              <button mat-raised-button class="btn btn-success btn-md rounded-0" type="button" data-toggle="tooltip"
+                data-placement="top" title="saveEdit" (click)="guardarEdicion()"><i class="fa fa-save"></i></button>
+                <button mat-raised-button class="btn btn-danger btn-md rounded-0" type="button" data-toggle="tooltip"
+                data-placement="top" title="saveEdit" (click)="cerrarEdicion()"><i class="fa fa-close"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

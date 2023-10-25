@@ -1,0 +1,45 @@
+<div class="container mt-4" *ngIf="!visibleEdit && !visibleAdd">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <h2 class="col-10">Lista de Datos</h2>
+        <button mat-raised-button class="btn btn-success btn-sm rounded-0 col-2" type="button" data-toggle="tooltip" data-placement="top" title="Edit" (click)="openAdd()"><i class="fa fa-add"></i> Agregar Registro</button>
+      </div>
+      <table class="table mt-2">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>Dirección</th>
+            <th>Identificación</th>
+            <th>Fecha</th>
+            <th>Moneda</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataInformation">
+            <td>{{ item.codigo }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>{{ item.direccion }}</td>
+            <td>{{ item.identificacion }}</td>
+            <td>{{ item.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+            <td>{{ item.moneda }}</td>
+            <td>
+              <button mat-raised-button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" (click)="EditPerson(item)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" (click)="DeletePerson(item.codigo)"><i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="visibleEdit" class="">
+  <app-editDataList [dataPersonEdit]="dataPersonEdit" (editDataEmitter)="editDataEmitterEdit($event)"></app-editDataList>
+</div>
+
+<div *ngIf="visibleAdd" class="">
+  <app-addListDataQuala (editDataEmitter)="editDataEmitterSave($event)"></app-addListDataQuala>
+</div>

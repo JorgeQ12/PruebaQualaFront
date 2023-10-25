@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PruebaFrontQuala';
+  mClientes: Boolean = false;
+  mVentas: Boolean = false;
+  mProductos: Boolean = true;
+
+  title = 'FrontDigital';
+
+  moduloLista(){
+    this.mClientes = true;
+  }
+  moduloC(){
+    this.mClientes = true;
+    this.mVentas = false;
+    this.mProductos = false;
+  }
+  moduloV(){
+    this.mClientes = false;
+    this.mVentas = true;
+    this.mProductos = false;
+  }
 }

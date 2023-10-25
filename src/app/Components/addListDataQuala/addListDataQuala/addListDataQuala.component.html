@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Añadir Datos</h2>
+      <form [formGroup]="saveDataForm">
+        <table class="table mt-2">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Dirección</th>
+              <th>Identificación</th>
+              <th>Moneda</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input type="text" class="form-control" formControlName="descripcion"
+                  required maxlength="250">
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="direccion"
+                  required maxlength="250">
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="identificacion" required maxlength="50">
+              </td>
+              <td>
+                <select  class="form-control" formControlName="moneda" required>
+                  <option *ngFor="let items of listMonedas" [value]="items.id">
+                    {{items.nombre}}
+                  </option>
+                </select>
+              </td>
+              <td class="text-center">
+                <button mat-raised-button class="btn btn-success btn-md rounded-0" type="button" data-toggle="tooltip"
+                  data-placement="top" title="saveEdit" (click)="saveData()"><i class="fa fa-save"></i></button>
+                  <button mat-raised-button class="btn btn-danger btn-md rounded-0" type="button" data-toggle="tooltip"
+                  data-placement="top" title="saveEdit" (click)="saveClose()"><i class="fa fa-close"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
